@@ -1,0 +1,6 @@
+Number of paddle PMTs = 2
+Number of Scint Planes = 2
+
+1st Scint Array Rotation = 90.0
+
+1st Scint Array NPaddles = 29

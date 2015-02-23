@@ -58,13 +58,13 @@ Detector3D::Detector3D()
       
 
       // s1x - Scintillation Plane     
-      s1xplane = new ScintPlane3D((char*)"s1x",top);
+      //s1xplane = new ScintPlane3D((char*)"s1x",top);
 
       // s1y - Scintillation Plane  
       s1yplane = new ScintPlane3D((char*)"s1y",top);
       
       //s2x Scint Plane
-       s2xplane = new ScintPlane3D((char*)"s2x",top);
+      // s2xplane = new ScintPlane3D((char*)"s2x",top);
 
       //s2y Scint Plane
       // changed volume size to 60
