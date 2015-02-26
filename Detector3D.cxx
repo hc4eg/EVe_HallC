@@ -33,20 +33,32 @@ Detector3D::Detector3D()
       mgr = new TGeoManager("Geom", "Composite shape example");
       TGeoMedium *medium = 0;
       top = mgr->MakeBox("TOP",medium,600,300,300);
-      mgr->SetTopVolume(top); 
+      mgr->SetTopVolume(top);
 
-    string PN[6]={"x", "y", "u", "v", "yp", "xp"};
-    vector<string> PlaneNames(&PN[0],&PN[0]+6);
+      TGeoBBox *top2box = new TGeoBBox("Top2box", 300, 300, 300);
+      top2 = new TGeoVolume ("TOP2",top2box);
+
+
+     string PN[6]={"x", "y", "u", "v", "yp", "xp"};  
+     vector<string> PlaneNames(&PN[0],&PN[0]+6);
+     
     // First MWDC
-    MWDC1 = new WireChamber3D((char*) "MWDC1",  PlaneNames, top);
+    RDC1 = new WireChamber3D((char*) "RDC1",  PlaneNames, top);
 
     // Second MWDC
-    MWDC2 = new WireChamber3D((char*) "MWDC2",  PlaneNames, top);
+    RDC2 = new WireChamber3D((char*) "RDC2",  PlaneNames, top);
+    
+   // First MWDC
+    RDC1 = new WireChamber3D((char*) "LDC1",  PlaneNames, top2);
+
+    // Second MWDC
+    RDC2 = new WireChamber3D((char*) "LDC2",  PlaneNames, top2);  
 
 
       //test code: check what transformation : translation and rotation did to a box in top volume
       
-      TGeoBBox *box = new TGeoBBox("Box",5, 5, 5); 
+      //TGeoBBox *box = new TGeoBBox("Box", 5, 5, 5); 
+      TGeoBBox *box = new TGeoBBox("Box", 28.9, 39.05, 22.23); 
       TGeoTranslation boxt(0,0,0);
       TGeoRotation boxr;
       double ang = 0;
@@ -54,39 +66,27 @@ Detector3D::Detector3D()
       TGeoCombiTrans *boxCT= new TGeoCombiTrans(boxt,boxr); 
       TGeoVolume *Box = new TGeoVolume ("Box", box);
       Box ->SetLineColor(kBlack);
-      top -> AddNode(Box,1,boxCT);
-      
+      top -> AddNodeOverlap(Box,1,boxCT);
 
-      // s1x - Scintillation Plane     
-      //s1xplane = new ScintPlane3D((char*)"s1x",top);
+      //Right Scintillation Plane  
+      Rsplane = new ScintPlane3D((char*)"Rs",top);
+ 
+      //Left Scint Plane
+      Lsplane = new ScintPlane3D((char*)"Ls",top2);
 
-      // s1y - Scintillation Plane  
-      s1yplane = new ScintPlane3D((char*)"s1y",top);
-      
-      //s2x Scint Plane
-      // s2xplane = new ScintPlane3D((char*)"s2x",top);
-
-      //s2y Scint Plane
-      // changed volume size to 60
-      s2yplane = new ScintPlane3D((char*)"s2y",top);
-
-      /*
        // In the end we create potential tracks
        // Important: Track order is important :Full tracks must be created 
        // before partial tracks.
-	
-       // Now we create partial tracks
-       partialTrack[0] = new Trajectory3D((char*)"PT1", top, mgr, (char*)"/TOP_1/");
-       partialTrack[1] = new Trajectory3D((char*)"PT2", top, mgr, (char*)"/TOP_1/");
-       partialTrack[2] = new Trajectory3D((char*)"PT3", top, mgr, (char*)"/TOP_1/");	
-       partialTrack[3] = new Trajectory3D((char*)"PT4", top, mgr, (char*)"/TOP_1/");	
-       partialTrack[4] = new Trajectory3D((char*)"PT5", top, mgr, (char*)"/TOP_1/");	
-       partialTrack[5] = new Trajectory3D((char*)"PT6", top, mgr, (char*)"/TOP_1/");	
-       partialTrack[6] = new Trajectory3D((char*)"PT7", top, mgr, (char*)"/TOP_1/");	
-       partialTrack[7] = new Trajectory3D((char*)"PT8", top, mgr, (char*)"/TOP_1/");	
-       partialTrack[8] = new Trajectory3D((char*)"PT9", top, mgr, (char*)"/TOP_1/");	
-       partialTrack[9] = new Trajectory3D((char*)"PT10", top, mgr, (char*)"/TOP_1/");		
-      */
+
+      //test code: check top2 volume's origin
+
+      TGeoTranslation top2t(-300.0, 0.0, 0.0);
+      TGeoRotation top2r;
+      double top2ang= 180.0;
+      top2r.SetAngles(90.0, top2ang, 90.0, 90.0+ top2ang, 0.0, 0.0);
+      TGeoCombiTrans *top2CT = new TGeoCombiTrans(top2t, top2r);
+      top -> AddNodeOverlap(top2, 1, top2CT);
+      
       
       for(int i=0; i<10; i++){
 	TrackList.push_back(new Trajectory3D(top,mgr,i));}

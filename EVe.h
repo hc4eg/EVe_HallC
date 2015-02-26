@@ -24,7 +24,6 @@
 #include "TFile.h"
 
 #include "WirePlane.h"
-//#include "MWDChamber.h"
 #include "WirePlane2D.h"
 #include "WireChamber.h"
 #include "CStransform.h"
@@ -80,8 +79,10 @@ private:
   TGCheckButton *fTextButtonRoads;
   TGNumberEntry *fNumberEntry1;
 
-  WireChamber *mwdc1;
-  WireChamber *mwdc2;
+  WireChamber *RDC1;
+  WireChamber *RDC2;
+  WireChamber *LDC1;
+  WireChamber *LDC2; 
 
   ScintPlane *s1X;
   ScintPlane *s1Y;
