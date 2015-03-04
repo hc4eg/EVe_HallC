@@ -23,9 +23,9 @@ using namespace std;
 
 class WirePlane3D{
 public:
-    WirePlane3D(char* ChamberName,string PlaneName,TGeoVolume* WireChamber3D, int color);
+  WirePlane3D(char* ChamberName,string PlaneName,TGeoVolume* WireChamber3D,TGeoManager* Mgr,int color);
     virtual ~WirePlane3D();
-    void Wire3DHit(int Num);
+    void Wire3DHit(TGeoManager* Mgr,int Num);
     void clear();
 
 protected:
