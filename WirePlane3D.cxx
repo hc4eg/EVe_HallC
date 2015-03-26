@@ -9,7 +9,7 @@
 
 using namespace std;
 
- WirePlane3D::WirePlane3D(char* ChamberName,string PlaneName,TGeoVolume* WireChamber3D, int color)
+WirePlane3D::WirePlane3D(char* ChamberName,string PlaneName,TGeoVolume* WireChamber3D,TGeoManager* Mgr,int color)
 {
    wirecolor = color;
 
@@ -156,9 +156,11 @@ WirePlane3D::~WirePlane3D()
 {
 }
 
-void WirePlane3D::Wire3DHit(int Num)
+void WirePlane3D::Wire3DHit(TGeoManager* Mgr,int Num)
 {
+    
     int Fac = Num/SPARSIFY;
+
     if(Fac<=WireNum)
     {
        Wires[Fac]->wire->SetLineColor(wirecolor);
