@@ -160,11 +160,11 @@ WirePlane2D::WirePlane2D(string PlaneName, double Height, double Width, double W
    else cout<< "WirePlane2D construct error.\n";
   
    //Type name and draw circle represent the WirePlane;
-     circ = new TEllipse(x+1.2*a,y+b*(1-(double)ind/6), b*0.03, b*0.03);
+     circ = new TEllipse(x+a+0.02,y+b*(1-(double)ind/6), b*0.03, b*0.03);
      circ->SetFillColor(kGray);
      circ->Draw();
 
-     TLatex *title = new TLatex(x+1.3*a,y+b*(1-(double)ind/6), PlaneName.c_str());
+     TLatex *title = new TLatex(x+a+0.035,y+b*(1-(double)ind/6), PlaneName.c_str());
      title->SetTextSize(0.02);
      title->Draw();
 

@@ -18,8 +18,12 @@ WireChamber:: WireChamber(char* chamberName,vector<string> planeNames,
                  double Height,double Width,CStransform *trans){
    cst=trans;
 
+   // (x,y) is the canvas lower left corner of the Chamber 
+
    double x =  cst->transXtoCX(0.0) - cst->transLtoCL(Width)/2;
    double y =  cst->transYtoCY(0.0) - cst->transLtoCL(Height)/2;
+   
+   // a,b are the canvas width and height for the chamber  
 
    double a = cst->transLtoCL(Width);
    double b = cst->transLtoCL(Height);
@@ -46,18 +50,18 @@ WireChamber:: WireChamber(char* chamberName,vector<string> planeNames,
    box2->Draw();
 
    //Draw all wire planes
-     GetVariables *hmsVars = new GetVariables("HMS.txt");
+     GetVariables *BHVars = new GetVariables("BH.txt");
       for(unsigned int i=0; i<planeNames.size(); i++) {
        wirePlanes.insert (
        std::pair<string, WirePlane2D>(planeNames[i], WirePlane2D(
           planeNames[i],
           Height, Width,
-          hmsVars->GetDouble(Form("%s.%s.WireAngle =", chamberName, planeNames[i].c_str())),
-          hmsVars->GetInt(Form("%s.%s.NumWires =",  chamberName, planeNames[i].c_str())),
+          BHVars->GetDouble(Form("%s.%s.WireAngle =", chamberName, planeNames[i].c_str())),
+          BHVars->GetInt(Form("%s.%s.NumWires =",  chamberName, planeNames[i].c_str())),
           i+1 ,/* I'm using 'i' to set the wire color (last arg) so each
              * plane is assigned a different color */
           cst ,
-          hmsVars->GetDouble(Form("%s.%s.Offset =",  chamberName, planeNames[i].c_str())),
+          BHVars->GetDouble(Form("%s.%s.Offset =",  chamberName, planeNames[i].c_str())),
           i
           )));
 }
