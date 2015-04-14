@@ -47,8 +47,9 @@ const double MWDC2_z = 0.81222; // [m]
 
 
 // s1x-plane variables
-        ///PMTlength
-        const double PMTlength=0.2936;
+        ///PMTlength unknown yet, testing
+        //const double PMTlength=0.2936;
+        const double PMTlength=0.1;
 
 	/// number of paddles
 	const int s1x_PN  = 16;
@@ -71,10 +72,10 @@ const double MWDC2_z = 0.81222; // [m]
 	const int s1y_PN  = 10;
 
 	/// Paddle length
-	const double s1y_length = 1.2;
+	const double s1y_length = 0.325;
 
 	/// Paddle height
-	const double s1y_height = 0.0753;
+	const double s1y_height = 0.040;
 
 	/// Distance between the begining of the first chamber and 
 	/// the beginning of the s1y scintillation plane;

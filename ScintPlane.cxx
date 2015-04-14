@@ -33,61 +33,35 @@ ScintPlane::ScintPlane(char *name, int n, double plength, double pheight, double
   
 
   //// FIXME:: convert to HMS units
-  double fpaddleH = 0.25;  ///  0.25 ????
+  //
   //double fpaddleL = 0.5625;  /// 0.5625 before -- why these values??
   int numPMT = pmt->GetInt("Number of paddle PMTs =");
 
-  // cout << horiz << " horiiz" << endl;
-  /*if (horiz == 1) {
-    rot = 1;
-  }
-  else {
-    rot =0;
-    }*/
 
   /// FIXME:: Conversion between canvas units and actual units goes back and forth. Rotation hard-coded into ScintillatorPaddle class but does not match up with this class - scaling factors need to be fixed
 
+  // sx0,sy0 is the coordinate of the sicntplane in canvas
   sx0 = cst->transXtoCX(0.0);                                    ; 
   sy0 = cst->transYtoCY(0.0);                                                        ;
-    double cx0= - cst->transLtoCL(paddle_length/2.0);
-    double cy0=  cst->transLtoCL(paddle_height*(N)/2.0 - paddle_height);
+   
+  // cx0,cy0 is the coordinate of the lower left corner of the 1st paddle 
+  double cx0= - cst->transLtoCL(paddle_length/2.0);
+  double cy0=  cst->transLtoCL(paddle_height*(N)/2.0 - paddle_height);
   
   double CL = cst->transLtoCL(paddle_length);
   double CH = cst->transLtoCL(paddle_height);  
-   
-
-  //sa = CL/fpaddleL;
-  
+     
   //Consider sxpaddle length is different from sypaddle length
-  sa=CL;
-  sb = CH/fpaddleH; 
+  sa = CL;
+  sb = CH; 
   /// sa and sb should be removed and left as CL and CH to be read into 
   /// ScintillatorPaddle -- scaling needs to be fixed in both classes
 
   for (int i=0; i<n ;i++){
     paddle[i]=new ScintillatorPaddle(i, sx0, sy0, sa ,sb ,cx0,cy0-i*CH, numPMT, PMTl,angle);} 
-          title = new TLatex(sx0-0.2*sa, sy0-2.40*sb, name);
+          title = new TLatex(sx0-0.8*sa, sy0-11.5*sb, name);
           title->SetTextSize(0.03);
           title->Draw(); 
-  /*if (horiz == 1) {
-    for(int i=0;i<n;i++) {
-      paddle[i] = new ScintillatorPaddle(i, sx0, sy0-i*CH, sa, sb, paddle_length, numPMT, rot);} 
-          title = new TLatex(sx0+sa*0.35-sa*0.3,sy0+sb*0.35, name);
-          title->SetTextSize(0.03);
-          title->Draw();
-    
-  }
-  else {
-    for(int i=0;i<n;i++) {
-      paddle[i] = new ScintillatorPaddle(i, sx0, sy0+i*CH, sa, sb, paddle_length, numPMT, rot);
-    }
-          title = new TLatex(sy0, sx0-1.5*sb, name);
-          title->SetTextSize(0.03);
-          title->Draw();  
-	  }*/
-  
-  
-       
   
   for(int i = 0; i<MAX_TRACK_NUM; i++)track_circ[i] = new TEllipse(0,0,0);
    
@@ -154,6 +128,7 @@ void ScintPlane::clear()
   }
 }
 
+/// Track function draws track circle to indicate particle position at scintplane
 void ScintPlane::Track(double x, double y, int i)
 {
   double CX =  cst->transXtoCX(x); 

@@ -384,16 +384,17 @@ void EVe::CreateWires()
 	      HMSvars->GetDouble("MWDC2.Height ="),
               HMSvars->GetDouble("MWDC2.Width ="),mwdc2_cst);
    
-   GetVariables *vars = new GetVariables("HMS.txt");
-   int NScintPlanes = vars->GetInt("Number of Scint Planes =");
+   // GetVariables *vars = new GetVariables("HMS.txt");
+   //int NScintPlanes = vars->GetInt("Number of Scint Planes =");
    
    // FIXME: Wire number is different in different wire planes. For now we asume
    // in planar view, that the number of wires is in all three w.p. the same. 
    //mwdc1 = new MWDChamber((char*)"MWDC-1", MWDC1_X, L1, MWDC_width, mwdc1_cst,0);
    //mwdc2 = new MWDChamber((char*)"MWDC-2", MWDC1_X, L2, MWDC_width, mwdc2_cst,0);
   
-   /// Variables to generate scintillator planes
-
+   /// Variables to generate scintillator planes planar view
+   
+   /*
    /// FIXME:: Shouldn't need this many pointers
 
    GetVariables *ScintVars = new GetVariables("HMS.txt");
@@ -403,11 +404,6 @@ void EVe::CreateWires()
    int nPaddles1 = ScintVars->GetInt("1st Scint Array NPaddles =");   
    int nPaddles2 = ScintVars->GetInt("2nd Scint Array NPaddles =");
    
-
-   /// FIXME:: Need to get rotated ScintPlanes (s1y, s2y) canvas positions 
-   /// consistent with Track (in ScintPlane::Track() )
-   /// Swapping x and y coords in CStransform doesn't quite work
-   /// -- just reflects both label and ScintPlane in xy line
    CStransform *s1x_cst = new CStransform(canvas_length, canvas_s1x_posx, 0.475);
    CStransform *s1y_cst = new CStransform(canvas_length, canvas_s1x_posx, 0.8);
    
@@ -425,6 +421,22 @@ void EVe::CreateWires()
      
      s2Y = new ScintPlane((char*)"s2y-plane", nPaddles2, s1y_length, s1y_height,PMTlength, s2y_cst, orient2);
    }
+
+   */
+
+   GetVariables *ScintVars = new GetVariables("BH.txt");
+
+   double orient1 =ScintVars->GetDouble("1st Scint Array Rotation =");
+
+   int nPaddles1 = ScintVars->GetInt("1st Scint Array NPaddles =");
+
+   CStransform *s1y_cst = new CStransform(canvas_length, canvas_s1x_posx, 0.8);
+
+   CStransform *s2y_cst = new CStransform(canvas_length, 0.7, 0.8);
+
+   s1Y = new ScintPlane((char*)"Left-splane", nPaddles1, s1y_length, s1y_height , PMTlength, s1y_cst, orient1);
+
+   s2Y = new ScintPlane((char*)"Right-splane", nPaddles1, s1y_length, s1y_height , PMTlength, s2y_cst, orient1);
 
 
    // In the end we plot a coordinate system

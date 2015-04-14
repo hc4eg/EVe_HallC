@@ -1,0 +1,31 @@
+Number of paddle PMTs = 2
+Number of Scint Planes = 2
+
+1st Scint Array Rotation = 90.0
+
+1st Scint Array NPaddles = 29
+///PMTlength
+PMTlength=0.2936
+
+// Rsplane variables
+        //s1y paddles' angle
+Rs.angle = 90.0
+
+	/// number of paddles
+Rs.PN = 29
+
+/// Position and tilt of the center of the E-plane
+Rs.PaddleLength = 32.5
+Rs.PaddleHeight = 4.00
+Rs.PaddleThickness = 1.00
+// Lsplane variables
+        //s2y paddles' angle
+Ls.angle = 90.0
+
+	/// number of paddles
+Ls.PN = 29
+
+/// Position and tilt of the center of the E-plane
+Ls.PaddleLength = 32.5
+Ls.PaddleHeight = 4.00
+Ls.PaddleThickness = 1.00
