@@ -59,18 +59,12 @@ Detector3D::Detector3D()
       Box ->SetLineColor(kBlack);
       top -> AddNodeOverlap(Box,1,boxCT);
 
-      // s1x - Scintillation Plane     
-      s1xplane = new ScintPlane3D((char*)"s1x",top);
+      //Right Scintillation Plane  
+      Rsplane = new ScintPlane3D((char*)"Rs",top);
+ 
+      //Left Scint Plane
+      Lsplane = new ScintPlane3D((char*)"Ls",top2);
 
-      // s1y - Scintillation Plane  
-      s1yplane = new ScintPlane3D((char*)"s1y",top);
-      
-      //s2x Scint Plane
-       s2xplane = new ScintPlane3D((char*)"s2x",top);
-
-      //s2y Scint Plane
-      // changed volume size to 60
-      s2yplane = new ScintPlane3D((char*)"s2y",top);
        // In the end we create potential tracks
        // Important: Track order is important :Full tracks must be created 
        // before partial tracks.

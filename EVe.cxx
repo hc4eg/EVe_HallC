@@ -1446,16 +1446,16 @@ void EVe::DoDraw(int event)
 // #endif
 //         detector->mwdc2->x2WireHit(B_mwdc_x2p_hit_wire[i]);
 //     } 
-    detector->s1xplane->clear();
-    detector->s1yplane->clear();
-    detector->s2xplane->clear();
-    detector->s2yplane->clear();
+    //detector->s1xplane->clear();
+    detector->Rsplane->clear();
+    //detector->s2xplane->clear();
+    detector->Lsplane->clear();
     // Now scintillaion plane 
     //Ndata_H_hod_1x_negtdchits 
-    detector->s1xplane->SPHit(Ndata_H_hod_1x_postdchits,Ndata_H_hod_1x_negtdchits,H_hod_1x_postdchits,H_hod_1x_negtdchits);
-    detector->s1yplane->SPHit(Ndata_H_hod_1y_postdchits,Ndata_H_hod_1y_negtdchits,H_hod_1y_postdchits,H_hod_1y_negtdchits);
-    detector->s2xplane->SPHit(Ndata_H_hod_2x_postdchits,Ndata_H_hod_2x_negtdchits,H_hod_2x_postdchits,H_hod_2x_negtdchits);
-    detector->s2yplane->SPHit(Ndata_H_hod_2y_postdchits,Ndata_H_hod_2y_negtdchits,H_hod_2y_postdchits,H_hod_2y_negtdchits);
+    //detector->s1xplane->SPHit(Ndata_H_hod_1x_postdchits,Ndata_H_hod_1x_negtdchits,H_hod_1x_postdchits,H_hod_1x_negtdchits);
+    detector->Rsplane->SPHit(Ndata_H_hod_1y_postdchits,Ndata_H_hod_1y_negtdchits,H_hod_1y_postdchits,H_hod_1y_negtdchits);
+    //detector->s2xplane->SPHit(Ndata_H_hod_2x_postdchits,Ndata_H_hod_2x_negtdchits,H_hod_2x_postdchits,H_hod_2x_negtdchits);
+    detector->Lsplane->SPHit(Ndata_H_hod_2y_postdchits,Ndata_H_hod_2y_negtdchits,H_hod_2y_postdchits,H_hod_2y_negtdchits);
 
 //     for (int i = 0; i<s1x_PN; i++) detector->scintdE->paddleHit(i,B_tp_de_LT[i] ,B_tp_de_RT[i]);
 //     for (int i = 0; i<s1y_PN; i++) detector->scintE->paddleHit(i,B_tp_e_LT[i] ,B_tp_e_RT[i]);
