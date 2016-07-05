@@ -24,7 +24,8 @@
     path=paths;
     
     while ( path && *path ) {
-      sprintf(filename,"hodtest.root");
+      //sprintf(filename,"hodtest.root");
+      sprintf(filename,"1877_test_0774.root");
       fd = fopen(filename,"r");
       if (fd != NULL) {
 	found = 1;

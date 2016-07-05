@@ -5,6 +5,10 @@
 //        Angles are in degrees                         //
 //////////////////////////////////////////////////////////
 
+// NOTE: If same variable name appears twice, only the 1st will be used
+// AND IF 1ST IS COMMENTED, IT WILL BE CONSIDERED AS 0.
+
+
 Number of paddle PMTs = 2
 Number of Scint Planes = 2
 
@@ -13,7 +17,10 @@ Number of Scint Planes = 2
 1st Scint Array NPaddles = 29
 
 //Data can be ajusted to change splanes and chambers position in planar view
-canvasL = 5.0
+// original
+canvasL = 2.5
+// test
+
 
 canvas.Rs.x = 0.27
 canvas.Rs.y = 0.8
@@ -26,10 +33,18 @@ canvas.RDC2.y = 0.18
 canvas.Ls.x = 0.7
 canvas.Ls.y = 0.8
 
-canvas.LDC1.x = 0.27
-canvas.LDC1.y = 0.475
-canvas.LDC2.x = 0.7
-canvas.LDC2.y = 0.475
+// Origin setting
+canvas.LDC1.x = 0.25
+canvas.LDC1.y = 0.5
+canvas.LDC2.x = 0.75
+canvas.LDC2.y = 0.5
+
+//canvas.LDC1.x = 0.27
+//canvas.LDC1.y = 0.475
+//canvas.LDC2.x = 0.7
+//canvas.LDC2.y = 0.475
+
+
 
 // FIXME:  These numbers make no sense.
 // FIXME:  These variables should not be used.  Instead use the RDC*.*.Dist vars
@@ -94,8 +109,15 @@ RDC2.v.Offset = 0.0
 RDC2.v.Dist = 0.08255
 
 //LDC1 stats
-LDC1.Height = 0.749
-LDC1.Width = 2.0444
+//When testing VDCs are vertical placed
+// Vertical placed setting
+LDC1.Height = 2.0444
+LDC1.Width = 0.749
+
+// Original data
+//LDC1.Height = 0.749
+//LDC1.Width = 2.0444
+
 LDC1.Thickness = 0.1397
 LDC1.WallThickness = 0.197
 LDC1.xPos = -0.85
@@ -103,20 +125,23 @@ LDC1.yPos = 0.0
 LDC1.zPos = 0.0
 LDC1.Tilt = 45.0
 
-LDC1.u.WireAngle = 26.25
+LDC1.u.WireAngle = -63.75
+//LDC1.u.WireAngle = 26.25
 LDC1.u.NumWires = 279
 LDC1.u.Offset = 0.0
-LDC1.u.Dist = 0.05715
+LDC1.u.Dist = 0.08255
 
-LDC1.v.WireAngle = -26.25
+LDC1.v.WireAngle = 63.75
+//LDC1.v.WireAngle = -26.25
 LDC1.v.NumWires = 279
 LDC1.v.Offset = 0.0
-LDC1.v.Dist = 0.08255
+LDC1.v.Dist = 0.05715
 
 //LDC2 stats
-
-LDC2.Height = 0.749
-LDC2.Width = 2.0444
+LDC2.Height = 2.0444
+LDC2.Width = 0.749
+//LDC2.Height = 0.749
+//LDC2.Width = 2.0444
 LDC2.Thickness = 0.1397
 LDC2.WallThickness = 0.197
 LDC2.xPos = -1.4068
@@ -124,15 +149,17 @@ LDC2.yPos = 0.0
 LDC2.zPos = 0.0
 LDC2.Tilt = 45.0
 
-LDC2.u.WireAngle = 26.25
+LDC2.u.WireAngle = -63.75
+//LDC2.u.WireAngle = 26.25
 LDC2.u.NumWires = 279
 LDC2.u.Offset = 0.0
-LDC2.u.Dist = 0.05715
+LDC2.u.Dist = 0.08255
 
-LDC2.v.WireAngle = -26.25
+LDC2.v.WireAngle = 63.75
+//LDC2.v.WireAngle = -26.25
 LDC2.v.NumWires = 279
 LDC2.v.Offset = 0.0
-LDC2.v.Dist = 0.08255
+LDC2.v.Dist = 0.05715
 
 ///PMTlength
 PMTlength = 0.1

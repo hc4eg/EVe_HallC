@@ -83,6 +83,7 @@ void WireChamber::WireHit(string planeName, int wireNum)
 {
 
     wirePlanes.find(planeName)->second.WireHit(wireNum);
+    cerr << planeName << " wire number " << wireNum << " is hit." << endl;
 }
 
 void WireChamber::clear()

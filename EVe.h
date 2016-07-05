@@ -113,93 +113,38 @@ private:
 
     TTree *t1;
 
-    /// MWDC1 nhits
-    Int_t Ndata_H_dc_1u1_tdchits;
-    Int_t Ndata_H_dc_1v1_tdchits;
-    Int_t Ndata_H_dc_1x1_tdchits;
-    Int_t Ndata_H_dc_1x2_tdchits;
-    Int_t Ndata_H_dc_1y1_tdchits;
-    Int_t Ndata_H_dc_1y2_tdchits;
+    /// LDC1 nhits
+    Int_t Ndata_B_vdc0_u1_wire;
+    Int_t Ndata_B_vdc0_v1_wire;
 
-    /// MWDC1 tdc hits
-    Double_t H_dc_1u1_tdchits[MAX_HITS_NUM];
-    Double_t H_dc_1v1_tdchits[MAX_HITS_NUM];
-    Double_t H_dc_1x1_tdchits[MAX_HITS_NUM];
-    Double_t H_dc_1x2_tdchits[MAX_HITS_NUM];
-    Double_t H_dc_1y1_tdchits[MAX_HITS_NUM];
-    Double_t H_dc_1y2_tdchits[MAX_HITS_NUM];
+    /// LDC1 tdc hits
+    Double_t B_vdc0_u1_wire[MAX_HITS_NUM];
+    Double_t B_vdc0_v1_wire[MAX_HITS_NUM];
 
-    /// MWDC1 hit times
-    Double_t H_dc_1u1_time[MAX_HITS_NUM];
-    Double_t H_dc_1v1_time[MAX_HITS_NUM];
-    Double_t H_dc_1x1_time[MAX_HITS_NUM];
-    Double_t H_dc_1x2_time[MAX_HITS_NUM];
-    Double_t H_dc_1y1_time[MAX_HITS_NUM];
-    Double_t H_dc_1y2_time[MAX_HITS_NUM];
+    /// LDC1 hit times
+    Double_t B_vdc0_u1_time[MAX_HITS_NUM];
+    Double_t B_vdc0_v1_time[MAX_HITS_NUM];
 
-    /// MWDC2 nhits
-    Int_t Ndata_H_dc_2u1_tdchits;
-    Int_t Ndata_H_dc_2v1_tdchits;
-    Int_t Ndata_H_dc_2x1_tdchits;
-    Int_t Ndata_H_dc_2x2_tdchits;
-    Int_t Ndata_H_dc_2y1_tdchits;
-    Int_t Ndata_H_dc_2y2_tdchits;
+    /// LDC2 nhits
+    Int_t Ndata_B_vdc0_u2_wire;
+    Int_t Ndata_B_vdc0_v2_wire;
 
-    /// MWDC2 hit tdc hits
-    Double_t H_dc_2u1_tdchits[MAX_HITS_NUM];
-    Double_t H_dc_2v1_tdchits[MAX_HITS_NUM];
-    Double_t H_dc_2x1_tdchits[MAX_HITS_NUM];
-    Double_t H_dc_2x2_tdchits[MAX_HITS_NUM];
-    Double_t H_dc_2y1_tdchits[MAX_HITS_NUM];
-    Double_t H_dc_2y2_tdchits[MAX_HITS_NUM];
+    /// LDC2 hit tdc hits
+    Double_t B_vdc0_u2_wire[MAX_HITS_NUM];
+    Double_t B_vdc0_v2_wire[MAX_HITS_NUM];
 
-    /// MWDC2 hit times
-    Double_t H_dc_2u1_time[MAX_HITS_NUM];
-    Double_t H_dc_2v1_time[MAX_HITS_NUM];
-    Double_t H_dc_2x1_time[MAX_HITS_NUM];
-    Double_t H_dc_2x2_time[MAX_HITS_NUM];
-    Double_t H_dc_2y1_time[MAX_HITS_NUM];
-    Double_t H_dc_2y2_time[MAX_HITS_NUM];
-
-
-    /// TRACKING
-    Int_t Ndata_H_tr_x;
-    Double_t H_tr_x[MAX_TRACK_NUM];
-    Double_t H_tr_y[MAX_TRACK_NUM];
-    Double_t H_tr_ph[MAX_TRACK_NUM];
-    Double_t H_tr_th[MAX_TRACK_NUM];
-
-
+    /// LDC2 hit times
+    Double_t B_vdc0_u2_time[MAX_HITS_NUM];
+    Double_t B_vdc0_v2_time[MAX_HITS_NUM];
 
     // variables for scintillation planes
 
-    Int_t Ndata_H_hod_1x_negtdchits;
-    Int_t Ndata_H_hod_1x_postdchits;
-    Double_t H_hod_1x_negtdchits[16];
-    Double_t H_hod_1x_postdchits[16];
+    //Int_t Ndata_H_hod_1x_negtdchits;
+    //Int_t Ndata_H_hod_1x_postdchits;
+    //Double_t H_hod_1x_negtdchits[16];
+    //Double_t H_hod_1x_postdchits[16];
     //Double_t* H_hod_1x_negtdchits;
     //Double_t* H_hod_1x_postdchits;
-
-    Int_t Ndata_H_hod_1y_negtdchits;
-    Int_t Ndata_H_hod_1y_postdchits;
-    Double_t H_hod_1y_negtdchits[16];
-    Double_t H_hod_1y_postdchits[16];
-    //Double_t* H_hod_1y_negtdchits;
-    //Double_t* H_hod_1y_postdchits;
-
-    Int_t Ndata_H_hod_2x_negtdchits;
-    Int_t Ndata_H_hod_2x_postdchits;
-    Double_t H_hod_2x_negtdchits[16];
-    Double_t H_hod_2x_postdchits[16];
-    //Double_t* H_hod_2x_negtdchits;
-    //Double_t* H_hod_2x_postdchits;
-
-    Int_t Ndata_H_hod_2y_negtdchits;
-    Int_t Ndata_H_hod_2y_postdchits;
-    Double_t H_hod_2y_negtdchits[16];
-    Double_t H_hod_2y_postdchits[16];
-    //Double_t* H_hod_2y_negtdchits;
-    //Double_t* H_hod_2y_postdchits;
 
     Detector3D *detector;
 
